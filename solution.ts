@@ -34,7 +34,11 @@ class Person {
 const filterByRating = (
   books: { title: string; rating: number }[]
 ): { title: string; rating: number }[] => {
-  {
-    return books.filter((book) => book.rating >= 4);
-  }
+  return books.filter((book) => book.rating >= 4);
+};
+
+const filterActiveUsers = (
+  users: { id: number; name: string; email: string; isActive: boolean }[]
+): { id: number; name: string; email: string; isActive: boolean }[] => {
+  return users.filter((user) => user.isActive === true);
 };
