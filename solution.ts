@@ -55,3 +55,33 @@ function printBookDetails(myBook: Book) {
     myBook.publishedYear
   }, Available: ${myBook.isAvailable ? "Yes" : "No"}`;
 }
+
+function getUniqueValues(array1, array2) {
+  const combined = [];
+  const unique = [];
+
+  for (let i = 0; i < array1.length; i++) {
+    combined.push(array1[i]);
+  }
+
+  for (let i = 0; i < array2.length; i++) {
+    combined.push(array2[i]);
+  }
+
+  for (let i = 0; i < combined.length; i++) {
+    let found = false;
+
+    for (let j = 0; j < unique.length; j++) {
+      if (combined[i] === unique[j]) {
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      unique.push(combined[i]);
+    }
+  }
+
+  return unique;
+}
