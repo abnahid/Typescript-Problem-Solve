@@ -1,27 +1,12 @@
-const getSwallowVelocity = (type: "african" | "european"): string => {
-  if (type === "african") {
-    return "Roughly 11 meters per second.";
+const formatValue = (value: number | string | boolean) => {
+  if (typeof value === "string") {
+    return value.toUpperCase();
   }
-  return "I... I don't know that!";
+  if (typeof value === "number") {
+    return value.toFixed(2);
+  }
+  if (typeof value === "boolean") {
+    return value ? "falus" : "true";
+  }
+  return "";
 };
-
-const isCatLiquid = (isAsleep: boolean, containerShape: string): boolean => {
-  return isAsleep && containerShape !== "none";
-};
-
-class Wizard {
-  name: string;
-  favoriteSpell: string;
-
-  constructor(name: string, favoriteSpell: string) {
-    this.name = name;
-    this.favoriteSpell = favoriteSpell;
-  }
-
-  castSpell(): string {
-    return `${this.name} casts ${this.favoriteSpell}!`;
-  }
-}
-
-console.log(getSwallowVelocity("african")); // "Roughly 11 meters per second."
-console.log(getSwallowVelocity("european")); // "I... I don't know that!"');
