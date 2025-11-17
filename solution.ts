@@ -85,3 +85,18 @@ function getUniqueValues(array1, array2) {
 
   return unique;
 }
+
+interface Product {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+}
+
+const calculateTotalPrice = (products: Product[]) => {
+  return products.reduce((acc, item) => {
+    const discount = item.discount ? item.discount / 100 : 0;
+    const finalPrice = item.price * (1 - discount);
+    return acc + finalPrice * item.quantity;
+  }, 0);
+};
