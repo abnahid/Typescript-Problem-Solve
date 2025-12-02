@@ -1,28 +1,27 @@
-const formatValue = (value: number | string | boolean) => {
+const formatValue = (
+  value: number | string | boolean
+): number | string | boolean => {
   if (typeof value === "string") {
     return value.toUpperCase();
   }
   if (typeof value === "number") {
     return value * 10;
   }
-  if (typeof value === "boolean") {
-    return value ? "false" : "true";
-  }
+  return !value;
 };
 
-const getLength = (input: string | any[]) => {
+const getLength = (input: string | any[]): number => {
   if (typeof input === "string") {
     return input.length;
-  } else if (Array.isArray(input)) {
-    return input.length;
   }
+  return input.length;
 };
 
 class Person {
   name: string;
   age: number;
 
-  constructor({ name, age }: { name: string; age: number }) {
+  constructor(name: string, age: number) {
     this.name = name;
     this.age = age;
   }
@@ -50,15 +49,18 @@ interface Book {
   isAvailable: boolean;
 }
 
-function printBookDetails(myBook: Book) {
+function printBookDetails(myBook: Book): string {
   return `Title: ${myBook.title}, Author: ${myBook.author}, Published: ${
     myBook.publishedYear
   }, Available: ${myBook.isAvailable ? "Yes" : "No"}`;
 }
 
-function getUniqueValues(array1, array2) {
-  const combined = [];
-  const unique = [];
+function getUniqueValues(
+  array1: (string | number)[],
+  array2: (string | number)[]
+): (string | number)[] {
+  const combined: (string | number)[] = [];
+  const unique: (string | number)[] = [];
 
   for (let i = 0; i < array1.length; i++) {
     combined.push(array1[i]);
@@ -93,10 +95,10 @@ interface Product {
   discount?: number;
 }
 
-const calculateTotalPrice = (products: Product[]) => {
+const calculateTotalPrice = (products: Product[]): number => {
   return products.reduce((acc, item) => {
-    const discount = item.discount ? item.discount / 100 : 0;
-    const finalPrice = item.price * (1 - discount);
+    const discount = item.discount ?? 0;
+    const finalPrice = item.price * (1 - discount / 100);
     return acc + finalPrice * item.quantity;
   }, 0);
 };
